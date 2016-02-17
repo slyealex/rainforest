@@ -6,40 +6,22 @@
   <p><%= @product.formatted_price %></p>
 </div>
 
-
 <div class="container">
-  <h3>Reviews</h3>
-
-  <p>Reviews for <%= @product.name %></p>
-
-  <% @product.reviews.each do |review| %>
-    <p>
-      <%= review.comment %>
-      <br>
-      <% if review.user != nil %>
-        <em>by <%= review.user.name %></em>
-        Added on: <%= review.created_at %>
-      <% end %>
-    </p>
-  <% end %>
+  <h3>Reviews</h3><br>
+  <div id="review-list">
+    <%= render :partial => "reviews" %>
+  </div>
 </div>
 
 <div class="container">
   <% if current_user %>
     <h4>New Review</h4>
 
-    <%= form_for([@product, @review]) do |f| %>
+    <%= form_for [@product, @review], :remote => true do |f| %>
 
-      <% if @review.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
-          <ul>
-            <% @review.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <div id="review-form-errors">
+        <%= render :partial => "/products/review_form_errors" %>
+      </div>
 
       <div class="field">
         <%= f.label :comment %><br/>

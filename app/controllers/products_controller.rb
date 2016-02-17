@@ -1,6 +1,22 @@
 class ProductsController < ApplicationController
+
+  before_action :load_product, only: [:show, :edit, :update, :destroy]
+
   def index
-    @products = Product.all
+    @products = if params[:search]
+      Product.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
+    else
+      Product.all
+    end
+
+    # if request.xhr?
+    #   render @products
+    # end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
@@ -47,6 +63,10 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :description, :price_in_cents)
+  end
+
+  def load_product
+    @product = Product.find(params[:id])
   end
 
 end

@@ -8,28 +8,29 @@
 </head>
 <body>
 
-  <%= render 'navbar' %>
+    <%= render 'navbar' %>
 
-  <div class="container">
-    <% if flash[:notice] %>
-      <p id="notice"><%= flash[:notice] %></p>
-    <% end %>
-    <% if flash[:alert] %>
-      <p id="alert"><%= flash[:alert] %></p>
-    <% end %>
-  </div>
-
-
-  <%= yield %>
-
-  <div class="container">
-    <p class="userinfo">
-      <% if current_user %>
-        Signed in as <%= current_user.name %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
-      <% else %>
-        <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+    <div class="container">
+      <% if flash[:notice] %>
+        <p id="notice"><%= flash[:notice] %></p>
       <% end %>
-    </p>
-  </div>
+      <% if flash[:alert] %>
+        <p id="alert"><%= flash[:alert] %></p>
+      <% end %>
+    </div>
+
+
+    <%= yield %>
+
+    <div class="container">
+      <p class="userinfo">
+        <% if current_user %>
+          Signed in as <%= current_user.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+        <% else %>
+          <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+        <% end %>
+      </p>
+    </div>
+
 </body>
 </html>
