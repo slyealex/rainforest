@@ -7,7 +7,7 @@
 </div>
 
 <div class="container">
-  <h3>Reviews</h3><br>
+  <h3 class="customHeader">Reviews</h3><br>
   <div id="review-list">
     <%= render :partial => "reviews" %>
   </div>
@@ -15,7 +15,7 @@
 
 <div class="container">
   <% if current_user %>
-    <h4>New Review</h4>
+    <h4 class="customHeader">New Review</h4>
 
     <%= form_for [@product, @review], :remote => true do |f| %>
 
