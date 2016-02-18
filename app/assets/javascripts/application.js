@@ -15,15 +15,3 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
-
-// $(document).on('ready', function() {
-//
-//
-//   $('a').on('mouseenter', function(){
-//       $(this).animate({ margin: -10, width: "+=20", height: "+=20" });
-//   })
-//   .on('mouseleave', function(){
-//       $(this).animate({ margin: 0, width: "-=20", height: "-=20" });
-//   })
-//
-// });
