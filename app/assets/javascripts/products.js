@@ -3,6 +3,7 @@ $(document).on('ready page:load', function() {
 
   $('#search-form').submit(function(event){
     event.preventDefault();
+
     var searchValue = $('#search').val();
 
     // $.ajax({
@@ -19,7 +20,13 @@ $(document).on('ready page:load', function() {
     //   $('#products').html(data);
     // });
 
-    $.getScript('/products?search=' + searchValue);
+    $.ajax({
+      url: '/products?search=' + $('searchValue'),
+      type: 'GET',
+      dataType: 'script'
+    })
+
+    // $.getScript('/products?search=' + searchValue);
 
 
   });
