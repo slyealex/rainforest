@@ -7,9 +7,14 @@
     <%= submit_tag "Search" %>
   <% end %>
 </div>
+
 <br>
 <br>
+
 <div id="products" class="container">
   <h1 class="customHeader">All Products</h1>
+  <h3><small><%= page_entries_info @products %></small></h3>
   <%= render @products %>
 </div>
+
+<%= paginate @products %>
